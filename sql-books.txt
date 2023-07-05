@@ -1,0 +1,54 @@
+create database books;
+use books;
+drop database books;
+create table books(
+s_no int primary key,
+book_title text,
+author_name text,
+genre text,
+publication year,
+price int);
+insert books values(1,"Cinderlla","Walter Disney","Cartoon",1997,5000);
+insert books values(2,"Zombie","Hitler","Horror",1987,500);
+insert books values(3,"Life of pie","Mary comb","Life lesson",1907,4000);
+insert books values(4,"Life of lord","Prince jack","Fiction",1907,4000);
+insert books values(5,"World tour","Willam","Action",2002,5500);
+insert books values(6,"Poppins","Wright Brothers","Cartoon",2010,3000);
+
+select * from books;
+
+select * from books
+where book_title="Cinderlla";
+
+update books
+set price=500
+where price=5000;
+
+delete from books
+where book_title="Life of pie";
+
+select * from books;
+
+select Avg(price) from books;
+
+create table Authors(
+se_no int primary key,
+author_age int,
+author_native varchar(50),
+author_name varchar(60),
+s_no int,
+constraint fk_s_no foreign key(s_no) references books(s_no));
+
+insert into Authors values(1,20,"Dubai","William",5);
+insert into Authors values(2,25,"Bombay","Zombie",2);
+insert into Authors values(3,30,"Sidney","walter Disney",1);
+insert into Authors values(4,40,"Darjiling","Wright brothers",6);
+
+SELECT * from books
+Inner join Authors
+on books.s_no = authors.s_no;
+
+
+drop table Authors;
+drop table books;
+
